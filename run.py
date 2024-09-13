@@ -1,5 +1,9 @@
-import spread
-from google.oauth2.service account import Credentials
+import gspread
+from google.oauth2.service_account import Credentials
+
+GRID_SIZE = 5
+NUM_SHIPS = 3
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -7,10 +11,13 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-CREDS = Credential.from_service_account_file('creds.json')
+CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.OPEN('module')
+SHEET = GSPREAD_CLIENT.open('module')
+
+SHEET_NAME = 'module'
+SHEET = GSPREAD_CLIENT.open(SHEET_NAME).sheet1
 
 
 
