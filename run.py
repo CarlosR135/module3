@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-
+import random
 ## Constants for grid size and number of ships
 GRID_SIZE = 5
 NUM_SHIPS = 3
@@ -35,7 +35,7 @@ def place_ships(grid, num_ships):
     return ships
 
 # Function to update the game grid n Googe Sheets
-def update_sheet(sheet,grid, start_now):
+def update_sheet(sheet, grid, start_now):
     cell_list = sheet.range(start_row, 1, start_row + GRID_SIZE)
     for i, cell in enumerate(cell_list):
         row = i // GRIDE_SIZE
@@ -43,6 +43,10 @@ def update_sheet(sheet,grid, start_now):
         cell.value = grid[row][col]
     sheet.update_cells(cell_list)
 
+     
+
+
+    
 
 
     
