@@ -24,6 +24,21 @@ SHEET = GSPREAD_CLIENT.open(SHEET_NAME).sheet1
 def init_grid(size):
     return [['O'] * size for _ in range(size)]
 
+    def place_ships(grid, num_ships):
+    ships = []
+    while len(ships) < num_ships:
+        x, y = random.randint(0, GRID_SIZE - 1), random.randint(0, GRID_SIZE - 1)
+        if grid[x][y] == 'O':
+            grid[x][y] = 'S'
+            ships.append((x, y))
+    return ships
+
+    
+
+
+  
+
+
 
 
 
