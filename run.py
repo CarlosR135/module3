@@ -58,6 +58,11 @@ guess = input("Enter your guess (e.g., '1 2'): ")
 try:
     x, y = map(int, guess.split())
 
+## Check if the guess is within the grid
+if not (0 <= x < GRID_SIZE and 0 <= y < GRID_SIZE):
+    print("Off-grid guess! Try again.")
+     continue
+
 
 
 
