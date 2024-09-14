@@ -1,32 +1,68 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleship Game with Google Sheets Integration
 
-Welcome,
+This Python script implements a simple Battleship game where the player's grid and game status are updated in real-time on a Google Sheet.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+## Overview
 
-## Reminders
+The script connects to a Google Sheet using the `gspread` library and Google Sheets API. It initializes a game grid, places ships on the computer's grid, and allows the player to make guesses. The results of the player's guesses are updated on the Google Sheet.
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+## Requirements
 
-## Creating the Heroku app
+- Python 3.x
+- `gspread` library
+- `google-auth` library
+- A Google Cloud Platform project with the Google Sheets API and Google Drive API enabled
+- A service account with access to the Google Sheets and Drive APIs
+- A `creds.json` file for authentication
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Installation
 
-1. `heroku/python`
-2. `heroku/nodejs`
+1. **Install the necessary libraries:**
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+   ```bash
+   pip3 install -r requirements.txt
+   ```
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+2. **Set up Google Sheets API and Google Drive API:**
 
-Connect your GitHub repository and deploy as normal.
+   - Create a project in the [Google Cloud Console](https://console.cloud.google.com/).
+   - Enable the Google Sheets API and Google Drive API.
+   - Create a service account and download the `creds.json` file.
 
-## Constraints
+3. **Share your Google Sheet with the service account email address** (found in `creds.json) with edit access.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Usage
 
----
+1. **Prepare your Google Sheet:**
 
-Happy coding!
+   - Create a new Google Sheet and name it `module` or adjust the `SHEET_NAME` variable in the script to match your sheet's name.
+   - The script updates the first sheet (Sheet1) of the Google Sheets file.
+
+2. **Run the script:**
+
+   ```bash
+   python run.py
+   ```
+
+   - The game will prompt you to enter your guesses in the format `x y` where `x` and `y` are coordinates on the grid.
+   - The game will display "Hit!" if you guess correctly, or "Miss!" otherwise.
+   - The grid and game state are updated in the Google Sheet in real-time.
+
+## Functions
+
+- `init_grid(size)`: Initializes a grid of size `size x size` with all cells set to `'O'`.
+- `place_ships(grid, num_ships)`: Randomly places `num_ships` ships (`'S'`) on the grid and returns their positions.
+- `update_sheet(sheet, grid, start_row)`: Updates the Google Sheet with the current grid state starting from `start_row`.
+
+## Notes
+
+- The game is limited to 10 turns.
+- Adjust the `GRID_SIZE` and `NUM_SHIPS` constants as needed for different grid sizes or ship counts.
+- The script assumes a grid size of 5x5 and 3 ships.
+
+## Troubleshooting
+
+- Ensure that the `creds.json` file is in the same directory as the script and is correctly configured.
+- Verify that the Google Sheet name matches the `SHEET_NAME` variable.
+- Ensure the Google Sheet is shared with the service account email.
+

@@ -25,14 +25,34 @@ NUM_SHIPS = 3
 
 # Initialize a grid with empty cells
 def init_grid(size):
+    """Initializes a grid with empty cells.
+
+    Args:
+        size: The size of the grid (number of rows and columns).
+
+    Returns:
+        A list of lists representing the grid,
+        with each cell initialized to 'O'.
+    """
     return [['O' for _ in range(size)] for _ in range(size)]
 
 
 # Randomly place ships ('S') on the grid
 def place_ships(grid, num_ships):
+    """Randomly places ships on the grid.
+
+    Args:
+        grid: The grid to place ships on.
+        num_ships: The number of ships to place.
+
+    Returns:
+        A list of tuples representing the
+        coordinates of the placed ships.
+    """
     ships = []
     while len(ships) < num_ships:
-        x, y = random.randint(0, GRID_SIZE - 1), random.randint(0, GRID_SIZE - 1)
+        x, y = random.randint(0, GRID_SIZE - 1),
+        random.randint(0, GRID_SIZE - 1)
         if grid[x][y] == 'O':
             grid[x][y] = 'S'
             ships.append((x, y))
@@ -41,7 +61,16 @@ def place_ships(grid, num_ships):
 
 # Update the Google Sheet with the current grid state
 def update_sheet(sheet, grid, start_row):
-    cell_list = sheet.range(start_row, 1, start_row + GRID_SIZE - 1, GRID_SIZE)
+    """Updates a range of cells in
+    the Google Sheet with the grid data.
+
+    Args:
+        sheet: The Google Sheet object.
+        grid: The grid data to update the sheet with.
+        start_row: The starting row of the range to update.
+    """
+    cell_list = sheet.range(start_row, 1,
+    start_row + GRID_SIZE - 1, GRID_SIZE)
     for i, cell in enumerate(cell_list):
         row = i // GRID_SIZE
         col = i % GRID_SIZE
