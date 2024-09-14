@@ -46,6 +46,12 @@ def update_sheet(sheet, grid, start_now):
 player_grid = init_grid(GRID_SIZE)
 computer_grid = init_grid(GRID_SIZE)
 
+# Place ships on the computer's grid
+computer_ships = place_ships(computer_grid, NUM_SHIPS)
+
+
+
+
 
      
 
