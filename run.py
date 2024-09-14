@@ -49,6 +49,11 @@ computer_grid = init_grid(GRID_SIZE)
 # Place ships on the computer's grid
 computer_ships = place_ships(computer_grid, NUM_SHIPS)
 
+# Number of turns the player gets
+turns = 10
+
+update_sheet(SHEET, player_grid, 1)  # Update the sheet with the player's grid
+
 
 
 
