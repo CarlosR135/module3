@@ -15,7 +15,6 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('module')
 
 SHEET_NAME = 'module'
 SHEET = GSPREAD_CLIENT.open(SHEET_NAME).sheet1
@@ -42,6 +41,11 @@ def update_sheet(sheet, grid, start_now):
         col = i % GRID_SIZE
         cell.value = grid[row][col]
     sheet.update_cells(cell_list)
+
+# Initialize grids for both player and computer
+player_grid = init_grid(GRID_SIZE)
+computer_grid = init_grid(GRID_SIZE)
+
 
      
 
