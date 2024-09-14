@@ -73,7 +73,9 @@ if not (0 <= x < GRID_SIZE and 0 <= y < GRID_SIZE):
     if not computer_ships:
         print("Congratulations! You've destroyed all battleships!")
         break
-
+ except ValueError:
+        print("Invalid input. Enter coordinates in the format 'x y'.")
+        
 
 
 
