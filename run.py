@@ -70,8 +70,9 @@ if not (0 <= x < GRID_SIZE and 0 <= y < GRID_SIZE):
     else:
         print("Miss!")
         player_grid[x][y] = '-'
-        
-
+    if not computer_ships:
+        print("Congratulations! You've destroyed all battleships!")
+        break
 
 
 
