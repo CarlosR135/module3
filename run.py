@@ -63,6 +63,15 @@ if not (0 <= x < GRID_SIZE and 0 <= y < GRID_SIZE):
     print("Off-grid guess! Try again.")
      continue
 
+     if (x, y) in computer_ships:
+        print("Hit!")
+        player_grid[x][y] = 'X'
+        computer_ships.remove((x, y))  # Remove the ship that was hit
+    else:
+        print("Miss!")
+        player_grid[x][y] = '-'
+        
+
 
 
 
