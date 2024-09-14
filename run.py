@@ -54,6 +54,10 @@ turns = 10
 
 update_sheet(SHEET, player_grid, 1)  # Update the sheet with the player's grid
 
+guess = input("Enter your guess (e.g., '1 2'): ")
+try:
+    x, y = map(int, guess.split())
+
 
 
 
